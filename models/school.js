@@ -15,8 +15,27 @@ const schoolSchema = new mongoose.Schema({
         type:String,
         required:true,
         
+    }, 
+    address:{
+        type:String,
+        
+    }, 
+    phone:{
+        type:String,
+        
+    },
+    classes_available:{
+        type:String,
+        
+    }, 
+    streams:{
+        type:String,
+        
+    },
+    area:{
+        type: Number,
+        
     }
-    
 
 },{
     timestamps:true

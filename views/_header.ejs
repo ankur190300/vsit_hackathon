@@ -6,6 +6,7 @@
     <% if (locals.school) { %>
         <li>
             <%= school.name %>
+            
         </li>
         <li>
             <a href= "/school/destroy-session" > Sign-out</a>
@@ -45,7 +46,7 @@
         <ul class="nav navbar-nav navbar-right">
             <% if (locals.school) { %>
                 <li>
-                   <a href ="#" ><%= school.name %></a>
+                   <a href ="/school/profile/<%= school.id %>" ><%= school.name %></a>
                 </li>
                 <li>
                     <a href= "/school/destroy-session" > Sign-out</a>

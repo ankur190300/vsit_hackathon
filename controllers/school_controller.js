@@ -64,3 +64,49 @@ module.exports.destroy_session = function(req,res){
     return res.redirect('/');
 
 }
+
+
+// render the user profile page 
+module.exports.profile = function (req, res) {
+
+    School.findById(req.params.id, function (err, school) {
+        return res.render('school_details',
+            {
+                title: 'school-details',
+                profile_school:school
+            });
+
+    })
+
+   
+};
+
+
+module.exports.update = async function (req, res) {
+
+    if (req.params.id == req.user.id) {
+        try {
+            
+            School.findByIdAndUpdate(req.params.id,req.body , function (err, user) {
+                
+                res.redirect('back');
+
+
+            })
+            
+            
+            
+        }
+        catch(err){
+           // req.flash('error', err);
+            console.log(err);
+            return res.redirect('back');
+        }
+
+    }
+    else {
+        
+       // req.flash('error', 'Unauthorized !')
+        res.status(401).send('Unauthorized');
+    }
+}

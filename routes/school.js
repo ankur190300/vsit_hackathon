@@ -18,4 +18,8 @@ router.post('/create-session',passport.authenticate('local', {failureRedirect:"/
 
 router.get('/destroy-session', schoolcontroller.destroy_session);
 
+router.get('/profile/:id',passport.checkAuthentication, schoolcontroller.profile);
+
+router.post('/update/:id', passport.checkAuthentication, schoolcontroller.update);
+
 module.exports = router;
