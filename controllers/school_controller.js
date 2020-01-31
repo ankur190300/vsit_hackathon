@@ -52,3 +52,15 @@ module.exports.create= function(req, res){
     })
 
 }
+
+module.exports.create_session = function(req, res){
+    console.log("succesfully signed in ");
+    return res.redirect("/");
+
+}
+
+module.exports.destroy_session = function(req,res){
+    req.logout();
+    return res.redirect('/');
+
+}

@@ -4,8 +4,8 @@ const app= express();
 const expressLayouts= require("express-ejs-layouts");
 const db= require("./config/mongoose");
 const session = require("express-session");// used for session cookies
-//const passport= require("passport");
-//const passportLocal= require("./config/passport-local-strategy");
+const passport= require("passport");
+const passportLocal= require("./config/passport-local-strategy");
 const MongoStore = require("connect-mongo")(session);// stores the cookie used to sign in in mongo database
 
 //helps in decoding and reading the form data 
@@ -32,7 +32,7 @@ app.set('views', './views');
 
 // set up the session cookies to store the user's id in encrypted form
 // should be after setting the views
-/*
+
 app.use(session({
     name:"foocheck",// name of the cookie
     secret:"foocheck",// code used to encrpyt the user-id
@@ -50,15 +50,15 @@ app.use(session({
 
     
 }));
-*/
+
 //should be after session set up
-/*
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 
-*/
+
 //set up routers 
 // routers should be mentioned in the end 
 app.use('/', require('./routes'));

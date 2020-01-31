@@ -1,8 +1,20 @@
-<ul>
+
+<% if (locals.school) { %>
     <li>
-        <a href= "/school/sign-in" >sign-in</a>
+        <%= school.name %>
     </li>
     <li>
-        <a href = "/school/sign-up">sign-up</a>
+        <a href= "/school/destroy-session" > Sign-out</a>
     </li>
-</ul>
+<% } else  { %>
+    <ul>
+        <li>
+            <a href= "/school/sign-in" >sign-in</a>
+        </li>
+        <li>
+            <a href = "/school/sign-up">sign-up</a>
+        </li>
+    </ul>
+    
+<% } %>
+

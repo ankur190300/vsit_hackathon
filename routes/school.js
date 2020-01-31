@@ -1,5 +1,5 @@
 const express= require('express');
-//const passport = require('passport');
+const passport = require('passport');
 const router = express.Router();
 const schoolcontroller= require('../controllers/school_controller');
 
@@ -13,9 +13,9 @@ router.get('/sign-in',schoolcontroller.sign_in);
 router.get('/sign-up', schoolcontroller.sign_up);
 
 router.post('/create',schoolcontroller.create);
-/*
-router.post('/create-session',passport.authenticate('local', {failureRedirect:"/"}),workercontroller.create_session);
 
-router.get('/destroy-session', workercontroller.destroy_session);*/
+router.post('/create-session',passport.authenticate('local', {failureRedirect:"/"}),schoolcontroller.create_session);
+
+router.get('/destroy-session', schoolcontroller.destroy_session);
 
 module.exports = router;
