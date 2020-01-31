@@ -1,8 +1,4 @@
-body{
-	background:url("https://static.vecteezy.com/system/resources/previews/000/418/228/non_2x/am-empty-school-background-vector.jpg");
-	background-repeat:no-repeat;
-	background-size:cover;
-}
+
 .c1{ 
 	/*margin:200px 440px 400px 50px ;*/
 	margin-left:100px;
@@ -12,7 +8,7 @@ body{
    border: 5px solid rgba(36,55,150,0.3);
 }
 .i1{
-	
+	float:center;
 	margin:10px auto;
 	width:100%;
 
@@ -23,11 +19,13 @@ font-weight: bold;
 font-size:4em;
 }
 
+
+
+
+
 .s1{ 
 
 	height:200px;
 	background:#000000;
 	margin:10px 10px;
 }
-
-

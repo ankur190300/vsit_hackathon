@@ -23,3 +23,6 @@ font-weight: bold;
 font-size:4em;
 }
 
+body {
+	height: 100%;
+}
