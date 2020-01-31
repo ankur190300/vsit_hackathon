@@ -2,11 +2,11 @@ const express = require("express");// include express to set up the server
 const port = 7000;
 const app= express();
 const expressLayouts= require("express-ejs-layouts");
-//const db= require("./config/mongoose");
+const db= require("./config/mongoose");
 const session = require("express-session");// used for session cookies
 //const passport= require("passport");
 //const passportLocal= require("./config/passport-local-strategy");
-//const MongoStore = require("connect-mongo")(session);// stores the cookie used to sign in in mongo database
+const MongoStore = require("connect-mongo")(session);// stores the cookie used to sign in in mongo database
 
 //helps in decoding and reading the form data 
 app.use(express.urlencoded())
