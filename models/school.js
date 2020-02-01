@@ -35,7 +35,17 @@ const schoolSchema = new mongoose.Schema({
     area:{
         type: Number,
         
+    }, 
+    hosted:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'School '
+    }], 
+    participated:[
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'School'
     }
+    ]
 
 },{
     timestamps:true

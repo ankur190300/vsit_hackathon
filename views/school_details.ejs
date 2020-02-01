@@ -1,5 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
-    
+<link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+<link href = "/css/school_details.css" rel= "stylesheet">
     <!-- this is just jumbotrone -->
     <div align=center class="jumbotron jumbotron-fluid" style="padding-bottom: 2%; background-color: #fcf">
         <div class="container mx-5 pl-5" style="padding-top: 0%;">
@@ -27,19 +28,19 @@
                         <form action = "/school/update/<%= school.id %>"  method = "POST" >
   
                             <div>
-                            <input type ="text" name ="address" placeholder ="school address" value ="<%= profile_school.address%>"  >
+                            <input class = "form1"type ="text" name ="address" placeholder ="school address" value ="<%= profile_school.address%>"  >
                             </div>
-                            <div><input type ="text" name ="phone" placeholder =" school phone number" value ="<%= profile_school.phone%>" >
+                            <div><input  class = "form1" type ="text" name ="phone" placeholder =" school phone number" value ="<%= profile_school.phone%>" >
                             </div>
-                            <div><input type ="email" name ="email" placeholder =" your email" value ="<%= profile_school.email%>"  required>
+                            <div><input class="form1" type ="email" name ="email" placeholder =" your email" value ="<%= profile_school.email%>"  required>
                             </div>
-                            <div><input type ="text" name ="classes_available" placeholder ="classes-available" value ="<%= profile_school.classes_available%>" >
+                            <div><input class="form1" type ="text" name ="classes_available" placeholder ="classes-available" value ="<%= profile_school.classes_available%>" >
                             </div>
-                            <div><input type ="text" name ="streams" placeholder ="streams available" value ="<%= profile_school.streams%>"  >
+                            <div><input class="form1" type ="text" name ="streams" placeholder ="streams available" value ="<%= profile_school.streams%>"  >
                             </div>
-                            <div><input type ="number" name ="area" placeholder ="campus area" value ="<%= profile_school.area%>"  > Sqm
+                            <div><input class="form1" type ="number" name ="area" placeholder ="campus area" value ="<%= profile_school.area%>"  > Sqm
                             </div>
-                            <div><input type ="submit" value ="update">
+                            <div class="form1 button1" style="vertical-align:middle; display: inline-block"><input type="submit" value="Update">
                             
                         </form>
 
@@ -47,27 +48,27 @@
                 
                    <% } else { %>
                 
-                        <div>
+                        <div class="info">
                             <b>Address: </b><% if(profile_school.address){ %> <%= profile_school.address %>
                             <% } else { %> None <% } %>
                             
                         </div>
-                        <div>
+                        <div    class="info">
                             <b>Phone: </b> <% if(profile_school.phone){ %> <%= profile_school.phone %>
                                 <% } else { %> None <% } %>
-                        </div>
-                        <div>
+                        </div  >
+                        <div  class="info">
                             <b>Email: </b><%= profile_school.email%>
                         </div>
-                        <div>
+                        <div class="info">
                             <b>Class: </b><% if(profile_school.classes_available){ %> <%= profile_school.classes_available %>
                                 <% } else { %> None <% } %>
                         </div>
-                        <div>
+                        <div class="info">
                             <b>Streams:</b> <% if(profile_school.streams){ %> <%= profile_school.streams %>
                                 <% } else { %> None <% } %>
                         </div>
-                        <div>
+                        <div class="info"></div>
                             <b>Area:</b> <% if(profile_school.area){ %> <%= profile_school.area %> Sqm
                                 <% } else { %> None <% } %>
                         </div>
