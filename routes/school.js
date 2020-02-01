@@ -22,4 +22,5 @@ router.get('/profile/:id',passport.checkAuthentication, schoolcontroller.profile
 
 router.post('/update/:id', passport.checkAuthentication, schoolcontroller.update);
 
+router.get('/registered', schoolcontroller.registered_schools);
 module.exports = router;

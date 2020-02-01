@@ -110,3 +110,15 @@ module.exports.update = async function (req, res) {
         res.status(401).send('Unauthorized');
     }
 }
+
+module.exports.registered_schools = async function(req,res){
+
+    let schools = await School.find({},);
+    
+    return res.render('registered_list', {
+        title:"registered school list",
+        schools:schools
+    })
+
+
+};

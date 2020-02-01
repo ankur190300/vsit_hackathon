@@ -1,120 +1,92 @@
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
-    <style>
-        form .form1 input {
-            padding-left: 16px;
-            width: 300px;
-            border-radius: 10px;
-            height: 40px;
-        }
-
-        form .form1 {
-            margin: 2%;
-        }
-
-        .button1 input {
-            position: relative;
-            background-color: #fcf;
-            transition: 0.5s;
-            border-color: #fcf;
-        }
-
-        .button1 input:after {
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .button1:hover input {
-            padding-right: 25px;
-        }
-
-        .button1:hover input:after {
-            opacity: 1;
-            right: 0;
-        }
-
-        .info {
-            font-size: 20px;
-            line-height: 200%;
-            word-spacing: 120%;
-            font-family: 'Work Sans', sans-serif;
-        }
-
-    </style>
-
-
+<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+    
     <!-- this is just jumbotrone -->
     <div align=center class="jumbotron jumbotron-fluid" style="padding-bottom: 2%; background-color: #fcf">
         <div class="container mx-5 pl-5" style="padding-top: 0%;">
-            <h1 class="ml-5 pl-5" style="font-family: 'PT Sans Narrow', sans-serif; font-weight: 900; color: #642987; font-size: 80px"><%= profile_school.name  %></h1>
+            <% var res = profile_school.name.split(" ");
+            var str= "";
+            for (var i = 0 ;i< res.length;i++){
+                str += res[i][0].toUpperCase() + res[i].slice(1)+ " "
+            }
+            %>
+            <h1 class="ml-5 pl-5" style="font-family: 'PT Sans Narrow', sans-serif; font-weight: 900; color: #642987; font-size: 80px"><%= str  %></h1>
         </div>
     </div>
-
+   
     <div class="container" style="margin: 0 auto 4%; border-style: solid; padding: 2%; border-radius: 20px">
         <div class="row">
             <div class="col-xs-6">
-                <img src="/assets/images/ryan.jpg" width="100%" height="auto" />
+                <img src="/images/ryan.jpg" width="100%" height="auto" />
             </div>
 
             <div class="col-xs-6" style="margin-top: 6%;">
-                <div style="margin-left: 6%; line-height: 200%; font-size: 17px">
-
+                <div style="margin-left: 6%; line-height: 200%; font-size: 17px" >
+                    
                     <% if(profile_school.id == school.id){%>
 
-                    <form action="/school/update/<%= school.id %>" method="POST">
+                        <form action = "/school/update/<%= school.id %>"  method = "POST" >
+  
+                            <div>
+                            <input type ="text" name ="address" placeholder ="school address" value ="<%= profile_school.address%>"  >
+                            </div>
+                            <div><input type ="text" name ="phone" placeholder =" school phone number" value ="<%= profile_school.phone%>" >
+                            </div>
+                            <div><input type ="email" name ="email" placeholder =" your email" value ="<%= profile_school.email%>"  required>
+                            </div>
+                            <div><input type ="text" name ="classes_available" placeholder ="classes-available" value ="<%= profile_school.classes_available%>" >
+                            </div>
+                            <div><input type ="text" name ="streams" placeholder ="streams available" value ="<%= profile_school.streams%>"  >
+                            </div>
+                            <div><input type ="number" name ="area" placeholder ="campus area" value ="<%= profile_school.area%>"  > Sqm
+                            </div>
+                            <div><input type ="submit" value ="update">
+                            
+                        </form>
 
-                        <div class="form1">
-                            <input type="text" name="address" placeholder="school address" value="<%= profile_school.address%>">
+                
+                
+                   <% } else { %>
+                
+                        <div>
+                            <b>Address: </b><% if(profile_school.address){ %> <%= profile_school.address %>
+                            <% } else { %> None <% } %>
+                            
                         </div>
-                        <div class="form1"><input type="text" name="phone" placeholder=" school phone number" value="<%= profile_school.phone%>">
+                        <div>
+                            <b>Phone: </b> <% if(profile_school.phone){ %> <%= profile_school.phone %>
+                                <% } else { %> None <% } %>
                         </div>
-                        <div class="form1"><input type="email" name="email" placeholder=" your email" value="<%= profile_school.email%>" required>
+                        <div>
+                            <b>Email: </b><%= profile_school.email%>
                         </div>
-                        <div class="form1"><input type="text" name="classes_available" placeholder="classes-available" value="<%= profile_school.classes_available%>">
+                        <div>
+                            <b>Class: </b><% if(profile_school.classes_available){ %> <%= profile_school.classes_available %>
+                                <% } else { %> None <% } %>
                         </div>
-                        <div class="form1"><input type="text" name="streams" placeholder="streams available" value="<%= profile_school.streams%>">
+                        <div>
+                            <b>Streams:</b> <% if(profile_school.streams){ %> <%= profile_school.streams %>
+                                <% } else { %> None <% } %>
                         </div>
-                        <div class="form1"><input type="number" name="area" placeholder="campus area" value="<%= profile_school.area%>"> Sqm
+                        <div>
+                            <b>Area:</b> <% if(profile_school.area){ %> <%= profile_school.area %> Sqm
+                                <% } else { %> None <% } %>
                         </div>
+                    
+                   <% } %>
 
-                        <div class="form1 button1" style="vertical-align:middle; display: inline-block"><input type="submit" value="Update">
 
-                    </form>
 
-                    <% } else { %>
-
-                    <div class="info">
-                        <b>Address: </b><% if(profile_school.address){ %> <%= profile_school.address %>
-                        <% } else { %> None <% } %>
-
-                    </div>
-                    <div class="info">
-                        <b>Phone: </b> <% if(profile_school.phone){ %> <%= profile_school.phone %>
-                        <% } else { %> None <% } %>
-                    </div>
-                    <div class="info">
-                        <b>Email: </b><%= profile_school.email%>
-                    </div>
-                    <div class="info">
-                        <b>Class: </b><% if(profile_school.classes_available){ %> <%= profile_school.classes_available %>
-                        <% } else { %> None <% } %>
-                    </div>
-                    <div class="info">
-                        <b>Streams:</b> <% if(profile_school.streams){ %> <%= profile_school.streams %>
-                        <% } else { %> None <% } %>
-                    </div>
-                    <div class="info">
-                        <b>Area:</b> <% if(profile_school.area){ %> <%= profile_school.area %> Sqm
-                        <% } else { %> None <% } %>
-                    </div>
-
-                    <% } %>
                 </div>
 
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
